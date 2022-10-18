@@ -36,7 +36,7 @@ public class Block {
     }
 
     public int getColor() {
-        return color.byteValue;
+        return color.rgbValue;
     }
 
     public byte getStaticValue(){
