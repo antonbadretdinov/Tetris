@@ -68,18 +68,17 @@ class AppModel {
     private fun validTranslation(position: Point, shape: Array<ByteArray>): Boolean {
         return if (position.y < 0 || position.x < 0) {
             false
-        } else if (position.x + shape.size > FieldConstants.ROW_COUNT.value) {
+        } else if (position.y + shape.size > FieldConstants.ROW_COUNT.value) {
             false
-        } else if (position.x + shape.size > FieldConstants.COLUMN_COUNT.value) {
+        } else if (position.x + shape[0].size > FieldConstants.COLUMN_COUNT.value) {
             false
         } else {
-            for (i in shape.indices) {
-                for (j in shape.indices) {
+            for (i in 0 until shape.size) {
+                for (j in 0 until shape[i].size) {
                     val y = position.y + i
                     val x = position.x + j
                     if (CellConstants.EMPTY.value != shape[i][j]
-                        && CellConstants.EMPTY.value != field[y][x]
-                    ) {
+                        && CellConstants.EMPTY.value != field[y][x]) {
                         return false
                     }
                 }
